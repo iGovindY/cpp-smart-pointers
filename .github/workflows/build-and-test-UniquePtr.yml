@@ -43,6 +43,6 @@ jobs:
       with:
         name: "Test Report"
         # The Test Report action expects JUnit-style test results. We use the CTest JUnit test driver to generate those.
-        path: 'junit_report.xml'
+        path: '${{github.workspace}}/UniquePtr/build/junit_report.xml'
         reporter: java-junit
 
