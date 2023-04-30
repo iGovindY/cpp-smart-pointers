@@ -35,7 +35,7 @@ jobs:
       working-directory: ${{github.workspace}}/UniquePtr/build
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ctest -C ${{env.BUILD_TYPE}}
+      run: ctest -C ${{env.BUILD_TYPE}} --output-junit Testing/junit_report.xml
       
     - name: Test Report
       uses: dorny/test-reporter@v1
@@ -43,5 +43,5 @@ jobs:
       with:
         name: "Test Report"
         # The Test Report action expects JUnit-style test results. We use the CTest JUnit test driver to generate those.
-        path-to-junit: 'test/Testing/$(ls test/Testing | grep -E "^\\d" | tail -n 1)/test_detail.xml'
+        path: 'Testing/junit_report.xml'
 
