@@ -1,11 +1,12 @@
-name: CMake Build and gtests
+name: build and run gtests
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+permissions:
+    checks: write
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
@@ -45,4 +46,5 @@ jobs:
         # The Test Report action expects JUnit-style test results. We use the CTest JUnit test driver to generate those.
         path: '${{github.workspace}}/UniquePtr/build/junit_report.xml'
         reporter: java-junit
+        
 
